@@ -13,11 +13,11 @@ async def on_message(message):
     channel = message.channel
     if message.author == client.user:
         return
-    if message.content == "Hello":
-        await channel.send("World")
+    if message.content == "hello":
+        await channel.send("world")
     if message.content.startswith("thumb"):
         channel = message.channel
-        await channel.send('Send me that 👍 reaction, mate')
+        await channel.send('send me that 👍 reaction, mate')
 
         def check(reaction, user):
             return user == message.author and str(reaction.emoji) == '👍'
@@ -29,4 +29,4 @@ async def on_message(message):
         else:
             await channel.send('👍')
 
-client.run("NjAyNTc2MzE1OTE2NDg0NjE4.XTcd_Q.X9m3WdyyR-MpIVVyL_-GM5SkC8Y")
+client.run("NjAyNTc2MzE1OTE2NDg0NjE4.XTc_eg.cNcwKOqtLaMj1XYWXfw0D_ByRfg")
