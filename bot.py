@@ -6,7 +6,7 @@ import os
 BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix=BOT_PREFIX)
 
 
 @bot.event
@@ -45,7 +45,12 @@ async def ayaya(ctx):
 
 
 @bot.command()
-async def echo(ctx, *, content:str):
+async def ditto(ctx, *, content:str):
     await ctx.send(content)
+
+
+@bot.command()
+async def ditto(ctx):
+    await ctx.send("ditto!!!")
 
 bot.run(TOKEN)
