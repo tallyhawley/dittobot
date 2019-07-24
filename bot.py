@@ -34,6 +34,8 @@ async def on_message(message):
             await channel.send('👎')
         else:
             await channel.send('👍')
+    if message.author.bot:
+        pass
     await bot.process_commands(message)
 
 
