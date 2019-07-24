@@ -1,13 +1,18 @@
 import discord
 import asyncio
-import uptimerobot
+import os
 
-client = discord.Client()
+BOT_PREFIX = os.environ['prefix']
+TOKEN = os.environ['token']
+
+client = discord.Client(command_prefix=BOT_PREFIX)
+
 
 @client.event
 async def on_ready():
     print("The bot is ready!")
     await client.change_presence(activity=discord.Game(name="wit yo feelings"))
+
 
 @client.event
 async def on_message(message):
@@ -16,7 +21,7 @@ async def on_message(message):
         return
     if message.content == "hello":
         await channel.send("world")
-    if message.content.startswith("!"):
+    if message.content.startswith("thumb"):
         await channel.send('send me that 👍 reaction, mate')
 
         def check(reaction, user):
@@ -29,4 +34,4 @@ async def on_message(message):
         else:
             await channel.send('👍')
 
-client.run("NjAyNTc2MzE1OTE2NDg0NjE4.XTeBZA.6yNq12NLUjNBjReIQ_aO_8YyTuY")
+client.run(TOKEN)
