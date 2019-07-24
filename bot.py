@@ -35,7 +35,7 @@ async def on_message(message):
         else:
             await channel.send('👍')
     if message.author.bot:
-        pass
+        await channel.send("https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
     await bot.process_commands(message)
 
 
