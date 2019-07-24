@@ -55,4 +55,9 @@ async def echo(ctx, *, content:str):
 async def ditto(ctx):
     await ctx.send("ditto!!!")
 
+
+@bot.command()
+async def bullyalex(ctx):
+    await ctx.send("@apclemons#0277 has big dumb")
+
 bot.run(TOKEN)
