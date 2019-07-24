@@ -6,19 +6,19 @@ import os
 BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
 
-client = commands.Bot(command_prefix=BOT_PREFIX)
+bot = commands.Bot(command_prefix=BOT_PREFIX)
 
 
-@client.event
+@bot.event
 async def on_ready():
     print("The bot is ready!")
-    await client.change_presence(activity=discord.Game(name="wit yo feelings"))
+    await bot.change_presence(activity=discord.Game(name="wit yo feelings"))
 
 
-@client.event
+@bot.event
 async def on_message(message):
     channel = message.channel
-    if message.author == client.user:
+    if message.author == bot.user:
         return
     if message.content == "hello":
         await channel.send("<@"+ str(message.author.id) + "> world")
@@ -29,15 +29,27 @@ async def on_message(message):
             return user == message.author and str(reaction.emoji) == '👍'
 
         try:
-            reaction, user = await client.wait_for('reaction_add', timeout=60.0, check=check)
+            reaction, user = await bot.wait_for('reaction_add', timeout=60.0, check=check)
         except asyncio.TimeoutError:
             await channel.send('👎')
         else:
             await channel.send('👍')
 
 
-@client.command()
-async def ayaya(ctx):
-    await ctx.send("ayaya!")
+@bot.command()
+async def ping(ctx):
+    '''
+    This text will be shown in the help command
+    '''
 
-client.run(TOKEN)
+    # Get the latency of the bot
+    latency = bot.latency  # Included in the Discord.py library
+    # Send it to the user
+    await ctx.send(latency)
+
+
+@bot.command()
+async def echo(ctx, *, content:str):
+    await ctx.send(content)
+
+bot.run(TOKEN)
