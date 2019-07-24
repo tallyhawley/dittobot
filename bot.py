@@ -45,6 +45,10 @@ async def on_message(message):
 async def ayaya(ctx):
     await ctx.send("ayaya! <:ayaya:603654847799099393>")
 
+@bot.command()
+async def AYAYA(ctx):
+    await ctx.send("https://cdn.discordapp.com/attachments/571351447795400707/603699021755842687/New_video.mp4")
+
 
 @bot.command()
 async def echo(ctx, *, content:str):
