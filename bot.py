@@ -6,7 +6,7 @@ import os
 BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
 
-bot = commands.Bot(command_prefix=BOT_PREFIX)
+bot = commands.Bot(command_prefix='!')
 
 
 @bot.event
