@@ -58,7 +58,7 @@ async def ditto(ctx):
 
 @bot.command()
 async def bullyalex(ctx):
-    await ctx.send("alex has big dumb")
+    await ctx.send("<@!602671259733458944> has big dumb")
 
 
 @bot.command()
