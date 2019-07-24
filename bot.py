@@ -65,6 +65,9 @@ async def bullyalex(ctx):
 async def OwO(ctx):
     await ctx.send("What's this?")
 
+@bot.command()
+async def AYAYA(ctx):
+    await ctx.send("https://cdn.discordapp.com/attachments/571351447795400707/603699021755842687/New_video.mp4")
 
 @bot.command()
 async def copypasta(ctx):
