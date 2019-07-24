@@ -13,8 +13,7 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print("The bot is ready!")
     await bot.change_presence(activity=discord.Game(name="wit yo feelings"))
-    await bot.change_presence(activity=discord.Game(name="test"))
-
+    
 
 @bot.event
 async def on_message(message):
