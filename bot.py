@@ -61,7 +61,7 @@ async def bullyalex(ctx):
     await ctx.send("alex has big dumb")
 
 @bot.command()
-async def UwU(ctx):
+async def owo(ctx):
     await ctx.send("What's this?")
 
 @bot.command()
