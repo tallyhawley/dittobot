@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print("The bot is ready!")
     await bot.change_presence(activity=discord.Game(name="wit yo feelings"))
-    
+
 
 @bot.event
 async def on_message(message):
@@ -38,15 +38,8 @@ async def on_message(message):
 
 
 @bot.command()
-async def ping(ctx):
-    '''
-    This text will be shown in the help command
-    '''
-
-    # Get the latency of the bot
-    latency = bot.latency  # Included in the Discord.py library
-    # Send it to the user
-    await ctx.send(latency)
+async def ayaya(ctx):
+    await ctx.send("ayaya!")
 
 
 @bot.command()
