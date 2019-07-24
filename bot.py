@@ -20,9 +20,9 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content == "hello":
-        await channel.send("world")
+        await channel.send("<"+ message.author.id + "> world")
     if message.content.startswith("thumb"):
-        await channel.send('send me that 👍 reaction, mate')
+        await channel.reply('send me that 👍 reaction, mate')
 
         def check(reaction, user):
             return user == message.author and str(reaction.emoji) == '👍'
