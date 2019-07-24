@@ -45,7 +45,7 @@ async def ayaya(ctx):
 
 
 @bot.command()
-async def ditto(ctx, *, content:str):
+async def echo(ctx, *, content:str):
     await ctx.send(content)
 
 
