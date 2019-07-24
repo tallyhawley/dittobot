@@ -41,7 +41,7 @@ async def on_message(message):
 
 @bot.command()
 async def ayaya(ctx):
-    await ctx.send("Ayaya!")
+    await ctx.send("ayaya!")
 
 
 @bot.command()
