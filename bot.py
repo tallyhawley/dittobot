@@ -1,11 +1,12 @@
 import discord
+from discord.ext import commands
 import asyncio
 import os
 
 BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
 
-client = discord.Client(command_prefix=BOT_PREFIX)
+client = commands.Bot(command_prefix=BOT_PREFIX)
 
 
 @client.event
@@ -33,5 +34,10 @@ async def on_message(message):
             await channel.send('👎')
         else:
             await channel.send('👍')
+
+
+@client.command()
+async def ayaya(ctx):
+    await ctx.send("ayaya!")
 
 client.run(TOKEN)
