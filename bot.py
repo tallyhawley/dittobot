@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix=BOT_PREFIX)
 @bot.event
 async def on_ready():
     print("The bot is ready!")
-    await bot.change_presence(activity=discord.Game(name="wit yo feelings"))
+    await bot.change_presence(activity=discord.Game(name="silence"))
 
 
 @bot.event
@@ -36,10 +36,12 @@ async def on_message(message):
             await channel.send('👎')
         else:
             await channel.send('👍')
-    if message.author.bot or message.author.id == 404119987939180554:
+    #if message.author.bot or message.author.id == 404119987939180554:
+        #await channel.send("https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
+    #await bot.process_commands(message)
+    if message.author.bot:
         await channel.send("https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
     await bot.process_commands(message)
-
 
 @bot.command()
 async def ayaya(ctx):
@@ -58,16 +60,13 @@ async def ditto(ctx):
 
 @bot.command()
 async def bullyalex(ctx):
-    await ctx.send("<@!602671259733458944> has big dumb")
+    await ctx.send("alex has big dumb")
 
 
 @bot.command()
 async def OwO(ctx):
     await ctx.send("What's this?")
 
-@bot.command()
-async def AYAYA(ctx):
-    await ctx.send("https://cdn.discordapp.com/attachments/571351447795400707/603699021755842687/New_video.mp4")
 
 @bot.command()
 async def copypasta(ctx):
