@@ -43,7 +43,7 @@ async def on_message(message):
 
 @bot.command()
 async def ayaya(ctx):
-    await ctx.send("ayaya! :ayaya:")
+    await ctx.send("ayaya! <:ayaya:603654847799099393>")
 
 
 @bot.command()
