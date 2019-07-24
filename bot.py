@@ -6,7 +6,7 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print("The bot is ready!")
-    await client.change_presence(activity=discord.Game(name="test"))
+    await client.change_presence(activity=discord.Game(name="wit yo feelings"))
 
 @client.event
 async def on_message(message):
@@ -15,8 +15,7 @@ async def on_message(message):
         return
     if message.content == "hello":
         await channel.send("world")
-    if message.content.startswith("thumb"):
-        channel = message.channel
+    if message.content.startswith("!"):
         await channel.send('send me that 👍 reaction, mate')
 
         def check(reaction, user):
