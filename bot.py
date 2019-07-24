@@ -43,7 +43,7 @@ async def on_message(message):
 
 @bot.command()
 async def ayaya(ctx):
-    await ctx.send("ayaya!")
+    await ctx.send("ayaya! <:ayaya:603654847799099393>")
 
 
 @bot.command()
@@ -61,7 +61,7 @@ async def bullyalex(ctx):
     await ctx.send("alex has big dumb")
 
 @bot.command()
-async def UwU(ctx):
+async def OwO (ctx):
     await ctx.send("What's this?")
 
 @bot.command()
