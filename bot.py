@@ -73,6 +73,7 @@ async def OwO(ctx):
 @bot.command()
 async def copypasta(ctx):
     a = random.randint(1, 2)
+    await ctx.send(a)
     if a == 1:
         await ctx.send("What the fuck did you just fucking say about me, you little bitch? I'll have you know "
                        "I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on "
