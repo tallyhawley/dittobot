@@ -72,6 +72,7 @@ async def OwO(ctx):
 
 @bot.command()
 async def copypasta(ctx):
+    await ctx.send("a")
     a = random.randint(1, 2)
     await ctx.send(a)
     if a == 1:
