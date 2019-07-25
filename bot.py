@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 import os
-from random import randint
+import random
 
 BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
