@@ -96,8 +96,8 @@ async def copypasta(ctx):
                        "short average path lengths and high clustering. It was proposed "
                        "by Duncan J. Watts and Steven Strogatz in their joint 1998 Nature "
                        "paper.[1] The model also became known as the (Watts) beta model "
-                       "after Watts used {\displaystyle \beta } \beta  to formulate it "
-                       "in his popular science book Six Degrees."
+                       "after Watts used beta to formulate it "
+                       "in his popular science book Six Degrees.")
 
 
 bot.run(TOKEN)
