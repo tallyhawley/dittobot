@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix=BOT_PREFIX)
 @bot.event
 async def on_ready():
     print("The bot is ready!")
-    await bot.change_presence(activity=discord.Game(name="silence"))
+    await bot.change_presence(activity=discord.Game(name="wit yo feelings"))
 
 
 @bot.event
@@ -21,9 +21,9 @@ async def on_message(message):
     if message.author == bot.user:
         return
     if message.content == "hello":
-        await channel.send("<@"+ str(message.author.id) + "> world")
+        await channel.send("<@" + str(message.author.id) + "> world")
     if message.content == "world":
-        await channel.send("<@"+ str(message.author.id) + "> hello")
+        await channel.send("<@" + str(message.author.id) + "> hello")
     if message.content.startswith("thumb"):
         await channel.send('send me that 👍 reaction, mate')
 
@@ -36,12 +36,13 @@ async def on_message(message):
             await channel.send('👎')
         else:
             await channel.send('👍')
-    #if message.author.bot or message.author.id == 404119987939180554:
-        #await channel.send("https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
-    #await bot.process_commands(message)
+    # if message.author.bot or message.author.id == 404119987939180554:
+    # await channel.send("https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
     if message.author.bot:
-        await channel.send("https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
+        await channel.send(
+            "https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
     await bot.process_commands(message)
+
 
 @bot.command()
 async def ayaya(ctx):
@@ -49,7 +50,7 @@ async def ayaya(ctx):
 
 
 @bot.command()
-async def echo(ctx, *, content:str):
+async def echo(ctx, *, content: str):
     await ctx.send(content)
 
 
@@ -86,5 +87,6 @@ async def copypasta(ctx):
                    "little \"clever\" comment was about to bring down upon you, maybe you would have held your fucking "
                    "tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will "
                    "shit fury all over you and you will drown in it. You're fucking dead, kiddo.")
+
 
 bot.run(TOKEN)
