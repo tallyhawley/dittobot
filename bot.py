@@ -90,13 +90,11 @@ async def copypasta(ctx):
                        "and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will "
                        "drown in it. You're fucking dead, kiddo.")
     elif a == 2:
-        await ctx.send("The Watts–Strogatz model is a random graph generation model"
-                       "that produces graphs with small-world properties, including "
-                       "short average path lengths and high clustering. It was proposed "
-                       "by Duncan J. Watts and Steven Strogatz in their joint 1998 Nature "
-                       "paper.[1] The model also became known as the (Watts) beta model "
-                       "after Watts used beta to formulate it "
-                       "in his popular science book Six Degrees.")
+        await ctx.send("The Watts–Strogatz model is a random graph generation model that produces graphs with "
+                       "small-world properties, including short average path lengths and high clustering. It was "
+                       "proposed by Duncan J. Watts and Steven Strogatz in their joint 1998 Nature paper.[1] The model "
+                       "also became known as the (Watts) beta model after Watts used beta to formulate it in his "
+                       "popular science book Six Degrees.")
     elif a == 3:
         await ctx.send("Runaway now is not OWL level, as fanboy-triggering as that sounds. People loved them for their "
                        "underdog streak, and their vibrant brand/personality, but expecting them to get pick up is "
