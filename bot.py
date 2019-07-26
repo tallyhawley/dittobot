@@ -15,6 +15,29 @@ async def on_ready():
     print("The bot is ready!")
     await bot.change_presence(activity=discord.Game(name="wit yo feelings"))
 
+@bot.command()
+async def ayaya(ctx):
+    await ctx.send("ayaya! <:ayaya:603654847799099393>")
+
+
+@bot.command()
+async def echo(ctx, *, content: str):
+    await ctx.send(content)
+
+
+@bot.command()
+async def ditto(ctx):
+    await ctx.send("ditto!!!")
+
+
+@bot.command()
+async def bullyalex(ctx):
+    await ctx.send("alex has big dumb")
+
+
+@bot.command()
+async def OwO(ctx):
+    await ctx.send("What's this?")
 
 @bot.event
 async def on_message(message):
@@ -43,32 +66,6 @@ async def on_message(message):
         await channel.send(
             "https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
     await bot.process_commands(message)
-
-
-@bot.command()
-async def ayaya(ctx):
-    await ctx.send("ayaya! <:ayaya:603654847799099393>")
-
-
-@bot.command()
-async def echo(ctx, *, content: str):
-    await ctx.send(content)
-
-
-@bot.command()
-async def ditto(ctx):
-    await ctx.send("ditto!!!")
-
-
-@bot.command()
-async def bullyalex(ctx):
-    await ctx.send("alex has big dumb")
-
-
-@bot.command()
-async def OwO(ctx):
-    await ctx.send("What's this?")
-
 
 @bot.command()
 async def copypasta(ctx):
