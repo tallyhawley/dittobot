@@ -45,10 +45,10 @@ async def OwO(ctx):
 async def id(ctx, *args: discord.Member):
     if len(args) == 0:
         print(str(ctx.author.id))
-        await ctx.send("<@" + str(ctx.author.id) + " " + int(ctx.author.id))
+        await ctx.send("<@" + str(ctx.author.id) + "> " + int(ctx.author.id))
     else:
         print(', '.join(str(args)))
-        await ctx.send("<@" + str(ctx.author.id) + " " + ', '.join(str(args)))
+        await ctx.send("<@" + str(ctx.author.id) + "> " + ', '.join())
 
 @bot.event
 async def on_message(message):
