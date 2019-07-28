@@ -41,6 +41,13 @@ async def bullyalex(ctx):
 async def OwO(ctx):
     await ctx.send("What's this?")
 
+@bot.command()
+async def id(ctx, *args: discord.Member):
+    if len(args) == 0:
+        await ctx.send("<@" + str(ctx.author.id) + " " + int(ctx.author.id))
+    else:
+        await ctx.send("<@" + str(ctx.author.id) + " " + ', '.join(str(args)))
+
 @bot.event
 async def on_message(message):
     channel = message.channel
