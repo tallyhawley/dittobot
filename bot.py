@@ -9,7 +9,7 @@ BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
 
 bot = commands.Bot(command_prefix=BOT_PREFIX)
-wit = wit.Wit("V7ITRHN3CSZZJ6WNOHCOMX2V4NC2ZJG6") //add wit.ai implementation
+wit = wit.Wit("V7ITRHN3CSZZJ6WNOHCOMX2V4NC2ZJG6") # add wit.ai implementation
 
 
 @bot.event
