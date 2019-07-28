@@ -42,13 +42,11 @@ async def OwO(ctx):
     await ctx.send("What's this?")
 
 @bot.command()
-async def id(ctx, *args):
+async def id(ctx, *members: discord.Member):
     if len(args) == 0:
         await ctx.send("<@" + str(ctx.author.id) + "> " + str(ctx.author.id))
     else:
-        converter = commands.MemberConverter()
-        list = [await converter.convert(ctx,item) for item in args]
-        ids = [member.id for member in list]
+        ids = [member.id for member in members]
         await ctx.send("<@" + str(ctx.author.id) + "> " + ', '.join(ids))
 
 @bot.event
