@@ -42,13 +42,11 @@ async def OwO(ctx):
     await ctx.send("What's this?")
 
 @bot.command()
-async def id(ctx, *args):
-    if len(args) == 0:
+async def id(ctx, members: commands.Greedy[discord.Member]):
+    if len(members) == 0:
         await ctx.send("<@" + str(ctx.author.id) + "> " + str(ctx.author.id))
     else:
-        converter = commands.MemberConverter()
-        members = [await converter.convert(ctx, arg) for arg in args]
-        await ctx.send("<@" + str(ctx.author.id) + "> " + ', '.join(member.id for member in members))
+        await ctx.send("<@" + str(ctx.author.id) + "> " + ', '.join(str(member.id) for member in members))
 
 @bot.event
 async def on_message(message):
@@ -59,8 +57,6 @@ async def on_message(message):
         await channel.send("<@" + str(message.author.id) + "> world")
     if message.content == "world":
         await channel.send("<@" + str(message.author.id) + "> hello")
-    if message.content == "id":
-        await channel.send("<@" + str(message.author.id) + " " + int(message.author.id))
     if message.content.startswith("thumb"):
         await channel.send('send me that 👍 reaction, mate')
 
