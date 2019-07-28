@@ -47,7 +47,7 @@ async def id(ctx, *args):
         await ctx.send("<@" + str(ctx.author.id) + "> " + str(ctx.author.id))
     else:
         converter = commands.MemberConverter()
-        members = [converter.convert(ctx, arg) for arg in args]
+        members = [await converter.convert(ctx, arg) for arg in args]
         await ctx.send("<@" + str(ctx.author.id) + "> " + ', '.join(member.id for member in members))
 
 @bot.event
