@@ -46,7 +46,8 @@ async def id(ctx, *args):
     if len(args) == 0:
         await ctx.send("<@" + str(ctx.author.id) + "> " + str(ctx.author.id))
     else:
-        list = [discord.Member(item) for item in args]
+        converter = commands.MemberConverter()
+        list = [await converter.convert(ctx,item) for item in args]
         ids = [member.id for member in list]
         await ctx.send("<@" + str(ctx.author.id) + "> " + ', '.join(ids))
 
