@@ -44,8 +44,10 @@ async def OwO(ctx):
 @bot.command()
 async def id(ctx, *args: discord.Member):
     if len(args) == 0:
+        print(str(ctx.author.id))
         await ctx.send("<@" + str(ctx.author.id) + " " + int(ctx.author.id))
     else:
+        print(', '.join(str(args)))
         await ctx.send("<@" + str(ctx.author.id) + " " + ', '.join(str(args)))
 
 @bot.event
