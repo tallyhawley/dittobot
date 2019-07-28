@@ -42,13 +42,13 @@ async def OwO(ctx):
     await ctx.send("What's this?")
 
 @bot.command()
-async def id(ctx, *args: discord.Member):
+async def id(ctx, *args):
     if len(args) == 0:
-        print(str(ctx.author.id))
-        await ctx.send("<@" + str(ctx.author.id) + "> " + int(ctx.author.id))
+        await ctx.send("<@" + str(ctx.author.id) + "> " + str(ctx.author.id))
     else:
-        print(', '.join(str(args)))
-        await ctx.send("<@" + str(ctx.author.id) + "> " + ', '.join())
+        list = [discord.Member(item) for item in args]
+        ids = [member.id for member in list]
+        await ctx.send("<@" + str(ctx.author.id) + "> " + ', '.join(ids))
 
 @bot.event
 async def on_message(message):
