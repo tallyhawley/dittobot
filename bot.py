@@ -50,6 +50,8 @@ async def on_message(message):
         await channel.send("<@" + str(message.author.id) + "> world")
     if message.content == "world":
         await channel.send("<@" + str(message.author.id) + "> hello")
+    if message.content == "id":
+        await channel.send("<@" + str(message.author.id) + " " + int(message.author.id))
     if message.content.startswith("thumb"):
         await channel.send('send me that 👍 reaction, mate')
 
