@@ -42,7 +42,7 @@ async def OwO(ctx):
     await ctx.send("What's this?")
 
 @bot.command()
-async def id(ctx, members: commands.Greedy[discord.Member]):
+async def id(ctx, *members: commands.Greedy[discord.Member]):
     if len(members) == 0:
         await ctx.send("<@" + str(ctx.author.id) + "> " + str(ctx.author.id))
     else:
