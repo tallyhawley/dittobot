@@ -1,4 +1,3 @@
-import torch
 import gensim, logging
 import os
 import gensim.downloader as api
