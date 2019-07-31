@@ -73,7 +73,7 @@ async def on_message(message):
     if message.author.bot:
         await channel.send("begone, bot")
     for swear in swears:
-        if message.content.find(swear) >= 0:
+        if message.content.lower().find(swear) >= 0:
             await channel.send("watch yo motherfuckin language")
 
     await bot.process_commands(message)
