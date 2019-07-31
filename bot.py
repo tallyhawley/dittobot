@@ -73,8 +73,9 @@ async def on_message(message):
     # await channel.send("https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
     if message.author.bot:
         await channel.send("begone, bot")
-    if "fuck" in message.content:
+    if message.content.find("fuck") >= 0:
         await channel.send("watch yo motherfuckin language")
+
     await bot.process_commands(message)
 
 @bot.command()

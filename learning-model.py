@@ -7,6 +7,7 @@ from keras.layers.recurrent import LSTM
 from keras.layers.embeddings import Embedding
 from keras.models import Model, Sequential
 from keras.layers import Dense, Activation
+import numpy as np
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
@@ -48,6 +49,8 @@ def word2idx(word):
     return model.wv.vocab[word].index
 
 
+
+
 def idx2word(idx):
     return model.wv.index2word[idx]
 
@@ -57,4 +60,24 @@ keras_model.add(Embedding(input_dim=vocab_size, output_dim=embedding_size,
 keras_model.add(LSTM(units=embedding_size))
 keras_model.add(Dense(units=vocab_size))
 keras_model.add(Activation('softmax'))
-keras_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy')
+keras_model.compile(optimizer='adam', loss='categorical_crossentropy')
+
+
+def sample(preds, temperature=1.0):
+  if temperature <= 0:
+    return np.argmax(preds)
+  preds = np.asarray(preds).astype('float64')
+  preds = np.log(preds) / temperature
+  exp_preds = np.exp(preds)
+  preds = exp_preds / np.sum(exp_preds)
+  probas = np.random.multinomial(1, preds, 1)
+  return np.argmax(probas)
+
+
+def generate_next(text, num_generated=10):
+  word_idxs = [word2idx(word) for word in text.lower().split()]
+  for i in range(num_generated):
+    prediction = model.predict(x=np.array(word_idxs))
+    idx = sample(prediction[-1], temperature=0.7)
+    word_idxs.append(idx)
+  return ' '.join(idx2word(idx) for idx in word_idxs)
