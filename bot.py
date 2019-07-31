@@ -9,6 +9,8 @@ TOKEN = os.environ['token']
 
 bot = commands.Bot(command_prefix=BOT_PREFIX)
 
+swears = ["fuck", "shit", "bitch", "pussy", "ass", "dick", "cunt", "whore", "cock", "piss"]
+
 @bot.event
 async def on_ready():
     print("The bot is ready!")
@@ -70,8 +72,9 @@ async def on_message(message):
     # await channel.send("https://cdn.discordapp.com/attachments/602577173278228621/603650216897544201/SilenceBot.png")
     if message.author.bot:
         await channel.send("begone, bot")
-    if message.content.find("fuck") >= 0:
-        await channel.send("watch yo motherfuckin language")
+    for swear in swears:
+        if message.content.find(swear) >= 0:
+            await channel.send("watch yo motherfuckin language")
 
     await bot.process_commands(message)
 
