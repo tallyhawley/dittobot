@@ -74,9 +74,9 @@ def sample(preds, temperature=1.0):
 
 
 def generate_next(text, num_generated=10):
-  word_idxs = [word2idx(word) for word in text.lower().split()]
-  for i in range(num_generated):
-    prediction = model.predict(x=np.array(word_idxs))
-    idx = sample(prediction[-1], temperature=0.7)
-    word_idxs.append(idx)
-  return ' '.join(idx2word(idx) for idx in word_idxs)
+    word_idxs = [word2idx(word) for word in text.lower().split()]
+    for i in range(num_generated):
+        prediction = model.predict(x=np.array(word_idxs))
+        idx = sample(prediction[-1], temperature=0.7)
+        word_idxs.append(idx)
+    return ' '.join(idx2word(idx) for idx in word_idxs)

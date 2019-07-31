@@ -3,6 +3,7 @@ from discord.ext import commands
 import asyncio
 import os
 import random
+from learning_model import generate_next as generate
 
 BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
@@ -27,8 +28,8 @@ async def echo(ctx, *, content: str):
 
 
 @bot.command()
-async def ditto(ctx):
-    await ctx.send("ditto!!!")
+async def ditto(ctx, *, message):
+    await ctx.send(generate(message, 5))
 
 
 @bot.command()
