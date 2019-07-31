@@ -1,26 +1,27 @@
-from keras.models import Model
-from keras.layers import Dense, Input, GRU
-from keras.layers.embeddings import Embedding
+import torch
+import gensim, logging
+import os
+import gensim.downloader as api
 
-word_dim = 50
-num_tokens = 15000
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-# Define the layers
-word_vec_input = Input(shape=(word_dim,))
-decoder_inputs = Input(shape=(None,))
-decoder_embed = Embedding(input_dim=num_tokens, output_dim=word_dim, mask_zero=True)
-decoder_gru_1 = GRU(word_dim, return_sequences=True, return_state=False)
-decoder_gru_2 = GRU(word_dim, return_sequences=True, return_state=True)
-decoder_dense = Dense(num_tokens, activation='softmax')
+class initsentences(object):
+    def __init__(self, dirname):
+        self.dirname = dirname
 
-# Connect the layers
-embedded = decoder_embed(decoder_inputs)
-gru_1_output = decoder_gru_1(embedded, initial_state=word_vec_input)
-gru_2_output, state_h = decoder_gru_2(gru_1_output)
-decoder_outputs = decoder_dense(gru_2_output)
+    def __iter__(self):
+        for fname in os.listdir(self.dirname):
+            if fname == ".DS_Store":
+                pass
+            else:
+                for line in open(os.path.join(self.dirname, fname)):
+                    yield line.split()
 
-# Define the model that will be used for training
-training_model = Model([word_vec_input, decoder_inputs], decoder_outputs)
 
-# Also create a model for inference (this returns the GRU state)
-decoder_model = Model([word_vec_input, decoder_inputs], [decoder_outputs, state_h])
+#sentences = initsentences('./data')  # a memory-friendly iterator
+
+
+#model = gensim.models.Word2Vec(sentences)
+
+model = gensim.models.KeyedVectors.load_word2vec_format("./tmp/glove-twitter-25.txt")
+print(model.most_similar("king"))
