@@ -132,6 +132,12 @@ async def copypasta(ctx):
                        " didn’t even ask me to practice learning my language. It was just the owl asserting to me that "
                        "he is God. I know I’ll die soon. I’ve accepted it. Yet I’m still upset that my life has to end "
                        "because of my inability to learn Spanish.")
+    elif a == 5:
+        await ctx.send("I've seen things you people wouldn't believe."
+                       "Attack ships on fire off the shoulder of Orion."
+                       "I watched C-beams glitter in the dark near the Tannhäuser Gate."
+                       "All those moments will be lost in time, like tears in rain."
+                       "Time to die.")
 
 
 bot.run(TOKEN)
