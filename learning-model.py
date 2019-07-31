@@ -2,6 +2,7 @@ import torch
 import gensim, logging
 import os
 import gensim.downloader as api
+from urllib.request import urlopen
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
@@ -23,5 +24,9 @@ class initsentences(object):
 
 #model = gensim.models.Word2Vec(sentences)
 
-model = gensim.models.KeyedVectors.load_word2vec_format("./tmp/glove-twitter-25.txt")
+corpus = urlopen("https://dittobot.s3-us-west-1.amazonaws.com/semeval-2016-2017-task3-subtaskA-unannotated.gz")
+
+model = gensim.models.KeyedVectors.load_word2vec_format("https://dittobot.s3-us-west-1.amazonaws.com/glove-twitter-200.txt")
+#model.train(corpus)
+print(model.most_similar("cat"))
 print(model.most_similar("king"))
