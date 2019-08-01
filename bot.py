@@ -13,16 +13,16 @@ bot = commands.Bot(command_prefix=BOT_PREFIX)
 generators = {}
 
 swears = ["fuck", "shit", "bitch", "pussy", "dick", "cunt", "whore", "cock", "piss"]
-prefixes = ['!', '.', ';;', ';', '?', '$', '%', '^', '&', '*']
+prefixes = ['!', '.', ';', '?', '$', '%', '^', '&', '*', '/', ',', '~', '-', '+', '>', '<']
 
 
 async def init_generator(guild: discord.Guild):
-    generators[guild] = MarkovGenerator(2,10)
+    generators[guild] = MarkovGenerator(2,25)
     messages = []
     for channel in guild.channels:
         if channel.type == discord.ChannelType.text:
             try:
-                async for message in channel.history(limit=None):
+                async for message in channel.history(limit=500000):
                     if not message.author.bot:
                         for prefix in prefixes:
                             if message.content.startswith(prefix):
