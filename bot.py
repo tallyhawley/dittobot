@@ -3,14 +3,35 @@ from discord.ext import commands
 import asyncio
 import os
 import random
-from learning_model import generate_next as generate
+from markov_chain_generator import MarkovGenerator
 
 BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
 
 bot = commands.Bot(command_prefix=BOT_PREFIX)
 
-swears = ["fuck", "shit", "bitch", "pussy", "ass", "dick", "cunt", "whore", "cock", "piss"]
+generators = {}
+
+swears = ["fuck", "shit", "bitch", "pussy", "dick", "cunt", "whore", "cock", "piss"]
+prefixes = ['!', '.', ';;', ';', '?', '$', '%', '^', '&', '*']
+
+
+async def init_generator(guild: discord.Guild):
+    generators[guild] = MarkovGenerator(2,10)
+    messages = []
+    for channel in guild.channels:
+        if channel.type == discord.ChannelType.text:
+            try:
+                async for message in channel.history(limit=None):
+                    if not message.author.bot:
+                        for prefix in prefixes:
+                            if message.content.startswith(prefix):
+                                break
+                            messages.append(message.content.lower())
+            except:
+                pass
+    for message in messages:
+        generators[guild].feed(message)
 
 @bot.event
 async def on_ready():
@@ -28,8 +49,8 @@ async def echo(ctx, *, content: str):
 
 
 @bot.command()
-async def ditto(ctx, *, message):
-    await ctx.send(generate(message, 5))
+async def ditto(ctx):
+    await ctx.send(generators[ctx.guild].generate())
 
 
 @bot.command()
@@ -38,8 +59,14 @@ async def bullyalex(ctx):
 
 
 @bot.command()
-async def OwO(ctx):
-    await ctx.send("What's this?")
+async def owo(ctx):
+    await ctx.send("what's this?")
+
+@bot.command()
+async def initialize(ctx):
+    guild = ctx.guild
+    await init_generator(guild)
+    await ctx.send("initialized!")
 
 @bot.command()
 async def id(ctx, *members: commands.Greedy[discord.Member]):
