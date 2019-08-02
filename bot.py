@@ -23,6 +23,7 @@ url = 'https://dittobot.s3-us-west-1.amazonaws.com/dashboard_x_usa_x_filter_nati
 tweets = urlopen(url)
 tweetreader = list(csv.reader(codecs.iterdecode(tweets, 'utf-8')))
 
+
 async def init_generator(guild: discord.Guild):
     generator = MarkovGenerator(2, 50)
     generators[guild] = generator
@@ -32,22 +33,30 @@ async def init_generator(guild: discord.Guild):
             try:
                 async for message in channel.history(limit=500000):
                     if not message.author.bot:
+                        has_prefix = False
                         for prefix in prefixes:
                             if message.content.startswith(prefix):
+                                has_prefix = True
                                 break
+                        if not has_prefix:
                             messages.append(message.content.lower())
             except:
                 pass
     for message in messages:
-        generators[guild].feed(message)
-        generators[guild].feed(message)
+        found = False
+        for word in banned_words:
+            if message.find(word) >= 0:
+                found = True
+                break
+        if not found:
+            generators[guild].feed(message)
+            generators[guild].feed(message)
     for row in tweetreader[1:]:
         try:
             if row[17] == 'en':
                 found = False
                 for word in banned_words:
                     if row[6].find(word) >= 0:
-                        print("found banned word: " + word)
                         found = True
                         break
                 if not found:
