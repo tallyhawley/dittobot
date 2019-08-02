@@ -99,10 +99,7 @@ async def initialize(ctx):
     guild = ctx.guild
     await init_generator(guild)
     await ctx.send("initialized!")
-
-@bot.command()
-async def help(ctx):
-    await ctx.send(";echo [text]\n;ayaya\n;owo\n;copypasta\n;initialize\n;ditto")
+    
 
 @bot.command()
 async def id(ctx, *members: commands.Greedy[discord.Member]):
