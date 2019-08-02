@@ -17,7 +17,7 @@ generators = {}
 
 swears = ["fuck", "shit", "bitch", "pussy", "dick", "cunt", "whore", "cock", "piss"]
 prefixes = ['!', '.', ';', '?', '$', '%', '^', '&', '*', '/', ',', '~', '-', '+', '>', '<']
-banned_words = ["gusting", "t.co", "humidity", "#", "@", "&amp;", "&lt;", "ud", "temperature", "barometer", "graffiti tracking", "nigga"]
+banned_words = ['gusting', 't.co', 'humidity', '#', '@', '&amp;', '&lt;', 'ud', 'temperature', 'barometer', 'graffiti tracking', 'nigga', '°f']
 
 url = 'https://dittobot.s3-us-west-1.amazonaws.com/dashboard_x_usa_x_filter_nativeretweets.csv'
 tweets = urlopen(url)
