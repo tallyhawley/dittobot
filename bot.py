@@ -101,6 +101,10 @@ async def initialize(ctx):
     await ctx.send("initialized!")
 
 @bot.command()
+async def help(ctx):
+    await ctx.send(";echo [text]\n;ayaya\n;owo\n;copypasta\n;initialize\n;ditto")
+
+@bot.command()
 async def id(ctx, *members: commands.Greedy[discord.Member]):
     if len(members) == 0:
         await ctx.send("<@" + str(ctx.author.id) + "> " + str(ctx.author.id))
