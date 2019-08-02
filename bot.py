@@ -17,7 +17,8 @@ generators = {}
 
 swears = ["fuck", "shit", "bitch", "pussy", "dick", "cunt", "whore", "cock", "piss"]
 prefixes = ['!', '.', ';', '?', '$', '%', '^', '&', '*', '/', ',', '~', '-', '+', '>', '<']
-banned_words = ['gusting', 't.co', 'humidity', '#', '@', '&amp;', '&lt;', 'ud', 'temperature', 'barometer', 'graffiti tracking', 'nigga', '°f', 'wind', 'north york']
+banned_words = ['gusting', 't.co', 'humidity', '#', '@', '&amp;', '&lt;', 'ud', 'temperature', 'barometer',
+                'graffiti tracking', 'nigga', '°f', 'wind', 'north york']
 
 url = 'https://dittobot.s3-us-west-1.amazonaws.com/dashboard_x_usa_x_filter_nativeretweets.csv'
 tweets = urlopen(url)
@@ -60,7 +61,7 @@ async def init_generator(guild: discord.Guild):
                     if word in row[6]:
                         found = True
                         break
-                if not found:
+                if not found and not row[6].startswith("wind"):
                     generators[guild].feed(row[6].lower())
         except IndexError:
             continue
