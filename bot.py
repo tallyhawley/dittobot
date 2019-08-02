@@ -4,6 +4,9 @@ import asyncio
 import os
 import random
 from markov_chain_generator import MarkovGenerator
+import csv
+from urllib.request import urlopen
+import codecs
 
 BOT_PREFIX = os.environ['prefix']
 TOKEN = os.environ['token']
@@ -14,10 +17,15 @@ generators = {}
 
 swears = ["fuck", "shit", "bitch", "pussy", "dick", "cunt", "whore", "cock", "piss"]
 prefixes = ['!', '.', ';', '?', '$', '%', '^', '&', '*', '/', ',', '~', '-', '+', '>', '<']
+banned_words = ["gusting", "t.co", "humidity", "#", "@", "&amp;", "&lt;", "ud", "temperature", "barometer", "graffiti tracking", "nigga"]
 
+url = 'https://dittobot.s3-us-west-1.amazonaws.com/dashboard_x_usa_x_filter_nativeretweets.csv'
+tweets = urlopen(url)
+tweetreader = list(csv.reader(codecs.iterdecode(tweets, 'utf-8')))
 
 async def init_generator(guild: discord.Guild):
-    generators[guild] = MarkovGenerator(2,25)
+    generator = MarkovGenerator(2, 50)
+    generators[guild] = generator
     messages = []
     for channel in guild.channels:
         if channel.type == discord.ChannelType.text:
@@ -32,10 +40,25 @@ async def init_generator(guild: discord.Guild):
                 pass
     for message in messages:
         generators[guild].feed(message)
+        generators[guild].feed(message)
+    for row in tweetreader[1:]:
+        try:
+            if row[17] == 'en':
+                found = False
+                for word in banned_words:
+                    if row[6].find(word) >= 0:
+                        print("found banned word: " + word)
+                        found = True
+                        break
+                if not found:
+                    generators[guild].feed(row[6].lower())
+
+        except IndexError:
+            continue
 
 @bot.event
 async def on_ready():
-    print("The bot is ready!")
+    print("the bot is ready!")
     await bot.change_presence(activity=discord.Game(name="wit yo feelings"))
 
 @bot.command()
@@ -50,7 +73,7 @@ async def echo(ctx, *, content: str):
 
 @bot.command()
 async def ditto(ctx):
-    await ctx.send(generators[ctx.guild].generate())
+    await ctx.send(generators[ctx.message.guild].generate())
 
 
 @bot.command()

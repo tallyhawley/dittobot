@@ -6,7 +6,7 @@ def tokenize(text):
 
 class MarkovGenerator:
     n = 2
-    maxwords = 10
+    maxwords = 25
     ngrams = {}
     beginnings = []
 
