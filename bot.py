@@ -45,10 +45,11 @@ async def init_generator(guild: discord.Guild):
     for message in messages:
         found = False
         for word in banned_words:
-            if message.find(word) >= 0:
+            if word in message:
                 found = True
                 break
         if not found:
+            generators[guild].feed(message)
             generators[guild].feed(message)
             generators[guild].feed(message)
     for row in tweetreader[1:]:
@@ -56,12 +57,11 @@ async def init_generator(guild: discord.Guild):
             if row[17] == 'en':
                 found = False
                 for word in banned_words:
-                    if row[6].find(word) >= 0:
+                    if word in row[6]:
                         found = True
                         break
                 if not found:
                     generators[guild].feed(row[6].lower())
-
         except IndexError:
             continue
 
