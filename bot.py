@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix=BOT_PREFIX)
 generators = {}
 
 swears = ["fuck", "shit", "bitch", "pussy", "dick", "cunt", "whore", "cock", "piss"]
-prefixes = ['!', '.', ';', '?', '$', '%', '^', '&', '*', '/', ',', '~', '-', '+', '>', '<']
+prefixes = ['!', '.', ';', '?', '$', '%', '^', '&', '*', '/', ',', '~', '-', '+', '>', '<', 'p!']
 banned_words = ['gusting', 't.co', 'humidity', '#', '@', '&amp;', '&lt;', 'ud', 'temperature', 'barometer',
                 'graffiti tracking', 'nigga', '°f', 'wind', 'north york']
 
