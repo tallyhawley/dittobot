@@ -3,4 +3,4 @@ async-timeout==3.0.1
 discord==1.0.1
 gensim==3.8.0
 keras==2.2.4
-tensorflow==1.14.0
+tensorflow==2.7.2
